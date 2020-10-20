@@ -1,25 +1,25 @@
 <template>
   <div class="calc">
-    <div class="disp">{{ outputValue }}</div>
-    <div class="btn" @click="clearAll">C</div>
-    <div class="btn" @click="clearCurrent">CE</div>
-    <div class="btn" @click="sign">+/-</div>
-    <div class="btn" @click="divide">/</div>
-    <div class="btn" @click="appendNum('7')">7</div>
-    <div class="btn" @click="appendNum('8')">8</div>
-    <div class="btn" @click="appendNum('9')">9</div>
-    <div class="btn" @click="multiply">*</div>
-    <div class="btn" @click="appendNum('4')">4</div>
-    <div class="btn" @click="appendNum('5')">5</div>
-    <div class="btn" @click="appendNum('6')">6</div>
-    <div class="btn" @click="minus">-</div>
-    <div class="btn" @click="appendNum('1')">1</div>
-    <div class="btn" @click="appendNum('2')">2</div>
-    <div class="btn" @click="appendNum('3')">3</div>
-    <div class="btn" @click="add">+</div>
-    <div class="zero btn" @click="appendNum('0')">0</div>
-    <div class="btn" @click="dot">.</div>
-    <div class="btn" @click="equal">=</div>
+    <div class="disp down">{{ outputValue }}</div>
+    <div class="btn up" @click="clearAll">C</div>
+    <div class="btn left" @click="clearCurrent">CE</div>
+    <div class="btn right" @click="sign">+/-</div>
+    <div class="btn left" @click="divide">/</div>
+    <div class="btn left" @click="appendNum('7')">7</div>
+    <div class="btn up" @click="appendNum('8')">8</div>
+    <div class="btn left" @click="appendNum('9')">9</div>
+    <div class="btn up" @click="multiply">*</div>
+    <div class="btn down" @click="appendNum('4')">4</div>
+    <div class="btn left" @click="appendNum('5')">5</div>
+    <div class="btn down" @click="appendNum('6')">6</div>
+    <div class="btn right" @click="minus">-</div>
+    <div class="btn up" @click="appendNum('1')">1</div>
+    <div class="btn down" @click="appendNum('2')">2</div>
+    <div class="btn up" @click="appendNum('3')">3</div>
+    <div class="btn down" @click="add">+</div>
+    <div class="zero btn left" @click="appendNum('0')">0</div>
+    <div class="btn down" @click="dot">.</div>
+    <div class="btn right" @click="equal">=</div>
   </div>
   <div>{{finalAnswer}}</div>
   <div>{{values}}</div>
@@ -123,13 +123,28 @@ export default {
     grid-auto-rows: minmax(50px, auto);
     font-size: 30px;
     text-align: center;
-    animation: loadit 1s ease-in;
+    color: white;
+}
+
+.up {
+  animation: moveUp 1.5s ease-in;
+}
+
+.down {
+  animation: moveDown 1.5s ease-in;
+}
+
+.left {
+  animation: moveLeft 1.5s ease-in;
+}
+.right{
+  animation: moveRight 1.5s ease-in;
 }
 
 .disp {
   grid-column: 1 / 5;
-  background-color: white;
-  border: solid 1px black;
+  background-color:black;
+  border: solid 1px white;
   padding-top: 6px;
 }
 
@@ -139,19 +154,19 @@ export default {
 
 .btn {
   cursor: pointer;
-  border: solid 1px black;
-  background-color: #EFEFEF;
+  border: solid 1px white;
+  background-color: black;
   padding-top: 6px;
 }
 
 .btn:hover {
-  opacity: 85%;
+  background-color: #202020;
 }
 
-@keyframes loadit {
+@keyframes moveUp {
     0% {
         opacity: 0%;
-        transform: translateY(40px);
+        transform: translateY(70px);
     }
     100% {
         opacity: 100%;
@@ -159,4 +174,36 @@ export default {
     }
 }
 
+@keyframes moveDown {
+    0% {
+        opacity: 0%;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 100%;
+        transform: translateY(0);
+    }
+}
+
+@keyframes moveLeft {
+    0% {
+        opacity: 0%;
+        transform: translateX(-80px);
+    }
+    100% {
+        opacity: 100%;
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveRight {
+    0% {
+        opacity: 0%;
+        transform: translateX(90px);
+    }
+    100% {
+        opacity: 100%;
+        transform: translateX(0);
+    }
+}
 </style>
